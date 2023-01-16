@@ -1,6 +1,6 @@
 # DannyMA_week3
 
-///
+```
 --QUESTION ONE;
 
 
@@ -505,4 +505,4 @@ p3 as (select customer_id, series1
  
  select * from f3
  where customer_id  IN (1,2,15,13,18,19,16,21,33,40,910,911,1000,996,206,219 )
- ///
+ ```
