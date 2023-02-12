@@ -1,7 +1,19 @@
 # DannyMA_week3
 
+
+Introduction
+Subscription based businesses are super popular and Danny realised that there was a large gap in the market - he wanted to create a new streaming service that only had food related content - something like Netflix but with only cooking shows!
+
+Danny finds a few smart friends to launch his new startup Foodie-Fi in 2020 and started selling monthly and annual subscriptions, giving their customers unlimited on-demand access to exclusive food videos from around the world!
+
+Danny created Foodie-Fi with a data driven mindset and wanted to ensure all future investment decisions and new features were decided using data. This case study focuses on using subscription style digital data to answer important business questions.
+
+Available Data
+Danny has shared the data design for Foodie-Fi and also short descriptions on each of the database tables - our case study focuses on only 2 tables but there will be a challenge to create a new table for the Foodie-Fi team.
+
+
 ```
---QUESTION ONE;
+--QUESTION ONE; How many customers has Foodie-Fi ever had?
 
 
 SELECT COUNT(DISTINCT customer_id) customers FROM foodie_fi.subscriptions;
@@ -11,7 +23,7 @@ SELECT a.plan_name, b.customer_id,b. start_date FROM foodie_fi.plans a
 ORDER BY b.customer_id, b.start_date;
 
 
---QUESTION (2)
+--QUESTION (2) What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
 
 SELECT COUNT(*),DATE_TRUNC('month', b.start_date) mon FROM foodie_fi.plans a
     LEFT JOIN foodie_fi.subscriptions b ON a.plan_id = b.plan_id
@@ -19,7 +31,7 @@ WHERE a.plan_name = 'trial'
 GROUP BY mon
 ORDER BY mon;
 
---Q(3)
+--Q(3) What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name
 
 SELECT a.plan_name, COUNT(a.plan_id) FROM foodie_fi.plans a
     LEFT JOIN foodie_fi.subscriptions b ON a.plan_id = b.plan_id
